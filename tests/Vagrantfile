@@ -1,0 +1,68 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+
+Vagrant.configure(2) do |config|
+
+
+  config.vm.define "centos6" do |centos6|
+    centos6.vm.box = "geerlingguy/centos6"
+      centos6.vm.synced_folder "../", "/tests/openbazaar", :mount_options => ["ro"]
+      centos6.vm.network "forwarded_port", guest: 18466, host: 19466
+      centos6.vm.network "forwarded_port", guest: 18467, host: 19467
+      centos6.vm.network "forwarded_port", guest: 18469, host: 19469
+      centos6.vm.network "forwarded_port", guest: 18470, host: 19470
+  end
+  
+  
+  config.vm.define "centos7" do |centos7|
+    centos7.vm.box = "geerlingguy/centos7"
+      centos7.vm.synced_folder "../", "/tests/openbazaar", :mount_options => ["ro"]
+      centos7.vm.network "forwarded_port", guest: 18466, host: 19466
+      centos7.vm.network "forwarded_port", guest: 18467, host: 19467
+      centos7.vm.network "forwarded_port", guest: 18469, host: 19469
+      centos7.vm.network "forwarded_port", guest: 18470, host: 19470
+  end
+
+
+  config.vm.define "debian8" do |debian8|
+    debian8.vm.box = "debian/jessie64"
+    debian8.vm.synced_folder "../", "/tests/openbazaar", :mount_options => ["ro"]
+    debian8.vm.network "forwarded_port", guest: 18466, host: 19466
+    debian8.vm.network "forwarded_port", guest: 18467, host: 19467
+    debian8.vm.network "forwarded_port", guest: 18469, host: 19469
+    debian8.vm.network "forwarded_port", guest: 18470, host: 19470
+  end
+
+
+  config.vm.define "ubuntu12" do |ubuntu12|
+    ubuntu12.vm.box = "hashicorp/precise64"
+    ubuntu12.vm.synced_folder "../", "/tests/openbazaar", :mount_options => ["ro"]
+    ubuntu12.vm.network "forwarded_port", guest: 18466, host: 19466
+    ubuntu12.vm.network "forwarded_port", guest: 18467, host: 19467
+    ubuntu12.vm.network "forwarded_port", guest: 18469, host: 19469
+    ubuntu12.vm.network "forwarded_port", guest: 18470, host: 19470
+  end
+
+
+  config.vm.define "ubuntu14" do |ubuntu14|
+    ubuntu14.vm.box = "ubuntu/trusty64"
+    ubuntu14.vm.synced_folder "../", "/tests/openbazaar", :mount_options => ["ro"]
+    ubuntu14.vm.network "forwarded_port", guest: 19466, host: 19466
+    ubuntu14.vm.network "forwarded_port", guest: 19467, host: 19467
+    ubuntu14.vm.network "forwarded_port", guest: 19469, host: 19469
+    ubuntu14.vm.network "forwarded_port", guest: 19470, host: 19470
+  end
+
+
+  config.vm.define "ubuntu16" do |ubuntu16|
+    ubuntu16.vm.box = "ubuntu/xenial64"
+    ubuntu16.vm.synced_folder "../", "/tests/openbazaar", :mount_options => ["ro"]
+    ubuntu16.vm.network "forwarded_port", guest: 19466, host: 19466
+    ubuntu16.vm.network "forwarded_port", guest: 19467, host: 19467
+    ubuntu16.vm.network "forwarded_port", guest: 19469, host: 19469
+    ubuntu16.vm.network "forwarded_port", guest: 19470, host: 19470
+  end
+
+
+end
